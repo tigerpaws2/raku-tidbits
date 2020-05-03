@@ -1,20 +1,21 @@
-FROM sumankhanal/raku-notebook:latest
-LABEL maintainer="Dr Suman Khanal <suman81765@gmail.com>"
+FROM tigerpaws2/raku-notebook:latest
+LABEL maintainer="Mike Schmidt <mike.pk.schmidt@gmail.com>"
 
 #Enabling Binder..................................
-ENV NB_USER suman
+ENV NB_USER mike
 ENV HOME /home/${NB_USER}
 
 #..............................................
 
 
 ENV PATH=$PATH:/usr/share/perl6/site/bin
-#RUN cd ${HOME} && git clone https://github.com/tigerpaws2/raku-tidbits.git \
-#    && zef install SVG::Plot --force-test
 
+COPY tidbits.ipynb LICENSE README.md ${HOME}/raku-tidbits/
 
-#..............................................
-COPY tidbits.ipynb ${HOME}
+USER root
+RUN chown -R ${NB_USER} ${HOME}
+USER ${NB_USER}
+WORKDIR ${HOME}
 
 EXPOSE 8888
 
