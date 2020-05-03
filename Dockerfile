@@ -9,9 +9,12 @@ ENV HOME /home/${NB_USER}
 
 
 ENV PATH=$PATH:/usr/share/perl6/site/bin
-RUN cd ${HOME} && git clone https://github.com/tigerpaws2/raku-tidbits.git \
-    && zef install SVG::Plot --force-test
+#RUN cd ${HOME} && git clone https://github.com/tigerpaws2/raku-tidbits.git \
+#    && zef install SVG::Plot --force-test
 
+
+#..............................................
+COPY tidbits.ipynb ${HOME}
 
 EXPOSE 8888
 
