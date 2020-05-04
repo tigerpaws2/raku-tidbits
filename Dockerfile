@@ -10,7 +10,7 @@ ENV HOME /home/${NB_USER}
 
 ENV PATH=$PATH:/usr/share/perl6/site/bin
 
-COPY tidbits.ipynb LICENSE README.md ${HOME}/raku-tidbits/
+COPY raku-tidbits/ ${HOME}
 
 USER root
 RUN chown -R ${NB_USER} ${HOME}
